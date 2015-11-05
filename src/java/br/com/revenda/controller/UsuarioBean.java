@@ -5,7 +5,7 @@ import br.com.revenda.dao.InterfaceUsuario;
 import br.com.revenda.dao.UsuarioDao;
 import java.awt.event.ActionEvent;
 import java.util.List;
-import javax.annotation.ManagedBean;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
@@ -21,7 +21,10 @@ public class UsuarioBean {
     private DataModel listaUsuarios;
 
     public Usuario getUsuario() {
-        return usuario;
+        if (this.usuario == null)
+            this.usuario = new Usuario();
+        
+        return this.usuario;
     }
 
     public void setUsuario(Usuario usuario) {
