@@ -22,7 +22,7 @@ public class Teste {
         //insert2();        
         //lista();
         //insert3();        
-        lista2();
+        //lista2();
         
         
         

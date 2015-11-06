@@ -6,7 +6,9 @@ import br.com.revenda.dao.UsuarioDao;
 import java.awt.event.ActionEvent;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 
@@ -30,7 +32,7 @@ public class UsuarioBean {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-
+    
     public DataModel getListaUsuarios() {
         List<Usuario> lista = new UsuarioDao().list();
         listaUsuarios = new ListDataModel(lista);
@@ -48,11 +50,13 @@ public class UsuarioBean {
     {
         InterfaceUsuario dao = new UsuarioDao();
         dao.salvar(usuario);
+        usuario = new Usuario();
     }
     public void alterar(ActionEvent actionEvent)
     {
         InterfaceUsuario dao = new UsuarioDao();
         dao.atualizar(usuario);
+        usuario = new Usuario();
     }
     
     public String excluir()
