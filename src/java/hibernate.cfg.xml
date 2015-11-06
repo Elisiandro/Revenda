@@ -12,5 +12,9 @@
     <property name="hibernate.current_session_context_class">thread</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
     <mapping class="br.com.agenda.model.Usuario"/>
+    <mapping class="br.com.agenda.model.Venda"/>
+    <mapping class="br.com.agenda.model.VendaItem"/>
+    <mapping class="br.com.agenda.model.Usu"/>
+    <mapping class="br.com.agenda.model.Vei"/>
   </session-factory>
 </hibernate-configuration>

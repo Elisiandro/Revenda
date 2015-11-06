@@ -1,11 +1,15 @@
 package br.com.agenda.App;
 
 import br.com.agenda.model.Usuario;
+import br.com.agenda.model.Vei;
+import br.com.agenda.model.Usu;
+import br.com.agenda.model.Venda;
+import br.com.agenda.model.VendaItem;
 import br.com.revenda.dao.InterfaceUsuario;
 import br.com.revenda.dao.UsuarioDao;
 import br.com.revenda.util.HibernateUtil;
+import java.util.ArrayList;
 import java.util.List;
-//import br.com.revenda.util.JpaUtil;
 import javax.persistence.EntityManager;
 import javax.swing.JOptionPane;
 import org.hibernate.Session;
@@ -21,10 +25,51 @@ public class Teste {
         
         //insert2();        
         //lista();
-        //insert3();        
+        insert3();        
         //lista2();
         
+        //insertVenda();
+        /*
+        Vei veiculo = new Vei("Fusca");
+        Usu usuario = new Usu();        
+        usuario.setNome("Elisiandro");
+        usuario.setVeiculo(veiculo);
         
+        Session ss = HibernateUtil.getSessionFactory().openSession();  
+        Transaction t = ss.beginTransaction();  
+        ss.save(usuario);  
+        t.commit();  
+        ss.close();
+        */
+        
+    }
+    
+    public static void insertVenda()
+    {        
+        VendaItem itensVenda = new VendaItem();        
+        itensVenda.setProduto("PEDRA");                
+        List<VendaItem> listaItens = new ArrayList<>();
+        listaItens.add(itensVenda);
+        itensVenda = new VendaItem();        
+        itensVenda.setProduto("PAPEL");
+        listaItens.add(itensVenda);
+        itensVenda = new VendaItem();        
+        itensVenda.setProduto("TESOURA");
+        listaItens.add(itensVenda);
+        
+        Venda venda = new Venda();
+        venda.setDescricao("AUGUSTO");
+        //venda.getVendaItem().add(itensVenda);
+        
+        venda.setVendaItem(listaItens);
+        
+        
+        
+        Session ss = HibernateUtil.getSessionFactory().openSession();  
+        Transaction t = ss.beginTransaction();  
+        ss.save(venda);  
+        t.commit();  
+        ss.close();
         
     }
     
