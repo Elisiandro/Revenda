@@ -12,44 +12,67 @@
         <style type="text/css">
             body {background-color: #eeeeee; font-size: 12px}
         </style> 
-        <title>Facelets Template</title>
+        <title>Sistema Revenda</title>
     </h:head>
 
     <h:body>
-        <!--        <div align="center">-->
-        <!--            <p:layout style="min-width:1020px;max-width:1020px;min-height:600px">  -->
         <p:layout fullPage="true">
-            
+            <!--Cima-->
             <p:layoutUnit position="north" size="100" >
-                    <!--                    <h:graphicImage url="/tema/imagens/topo.jpg" />-->
-                <center><h3>Sistema do Elisiandro</h3></center>
+                <!--<h:graphicImage url="/tema/imagens/topo.jpg" />-->
+                <center><h3>Sistema logo</h3></center>
             </p:layoutUnit>
-            
-             <p:layoutUnit position="west" size="200" rendered="true" collapsible="true" resizable="true" closable="true" header="Menu">
-                <h:form> 
+
+            <p:layoutUnit position="east" size="200" header="Acesso Rápido" resizable="true" closable="true" collapsible="true" effect="drop">
+<!--                <h:outputText value="Perfil de Usu" />-->
+                <h:form>
                     <p:menu>
-                        <p:submenu label="Usuarios">
-                            <p:menuitem value="Novo Usuario" actionListener="#{usuarioBean.prepararAdicionarUsuario(actionEvent)}"  icon="ui-icon-disk" onclick="PF('dlgUsu').show();" />
-                            <p:menuitem value="Lista Usuario" actionListener="#{usuarioBean.getListaUsuarios(actionEvent)}" icon="ui-icon-arrowrefresh-1-w" onclick="PF('dtUsuario').show();"/>
-                            <p:menuitem value="Update" actionListener="#{usuarioBean.prepararAdicionarUsuario(actionEvent)}" icon="ui-icon-arrowrefresh-1-w"/>
-                        </p:submenu>
-                        <p:submenu label="Clientes">
-                            <p:menuitem value="Delete" actionListener="#{usuarioBean.prepararAdicionarUsuario(actionEvent)}"  ajax="false" icon="ui-icon-close"/>
-                        </p:submenu>
-                        <p:submenu label="Fornecedores">
-                            <p:menuitem value="External" url="http://www.primefaces.org" icon="ui-icon-home"/>
-                            <p:menuitem value="Internal" outcome="index" icon="ui-icon-star"/>
+                        <p:submenu label="Perfil">
+                            <p:menuitem value="Thema" outcome="thema.jsf" icon="ui-icon-home"/>                            
                         </p:submenu>
                     </p:menu>
                 </h:form>
+            </p:layoutUnit>
+
+            <!--Esquerda-->
+            <p:layoutUnit position="west" size="200" rendered="true" collapsible="true" resizable="true" closable="true" header="Menu" effect="drop">
+                <h:form>                     
+                    <p:panelMenu >
+                        <p:submenu label="Principal">
+                            <p:menuitem value="Home" outcome="home.jsf" icon="ui-icon-home"/>
+                        </p:submenu>
+                        <p:submenu label="Cadastro">
+                            <p:menuitem value="Carros" icon="ui-icon-arrowrefresh-1-w"/>
+                            <p:menuitem value="Clientes" icon="ui-icon-arrowrefresh-1-w" outcome="Cliente.jsf"/>
+                            <p:menuitem value="Empresas" icon="ui-icon-arrowrefresh-1-w"/>
+                            <p:menuitem value="Fornecedores" icon="ui-icon-arrowrefresh-1-w"/>
+                            <p:menuitem value="Usuarios" icon="ui-icon-arrowrefresh-1-w"/>
+                        </p:submenu>
+                        <p:submenu label="Logistica">
+                            <p:menuitem value="Home" outcome="home.jsf" icon="ui-icon-close" />
+                            <p:menuitem value="Fornecedor" outcome="fornecedor.jsf" icon="ui-icon-close" />                                
+                        </p:submenu>
+                        <p:submenu label="Utilitário">
+                            <p:menuitem value="External" url="http://www.primefaces.org" icon="ui-icon-home"/>
+                            <p:menuitem value="Internal" icon="ui-icon-star"/>
+                        </p:submenu>
+                    </p:panelMenu>
+                </h:form>
             </p:layoutUnit> 
+            <!--Centro-->
             <p:layoutUnit position="center">  
                 <ui:insert name="centro">
-                    O que estiver aqui será substituido!
+
+                    Bem vindo usuario xxxx.
+                    <br />
+                    Data dd/mm/aaaa
+                    <br />
+                    Hoje  o dia esta p/ sol......
+
                 </ui:insert>
             </p:layoutUnit>  
+
         </p:layout>  
-        <!--        </div>-->
     </h:body>
 
     <!--    <h:body>

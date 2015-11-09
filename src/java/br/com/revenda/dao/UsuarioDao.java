@@ -10,10 +10,10 @@ import org.hibernate.Transaction;
  *
  * @author Elisiandro
  */
-public class UsuarioDao implements InterfaceUsuario{
+public class UsuarioDao implements InterfaceCrud<Usuario>{
 
     @Override
-    public Usuario getUsuarios(Long id) {
+    public Usuario getItem(Long id) {
         
         Session ss = HibernateUtil.getSessionFactory().openSession();
         return (Usuario) ss.load(Usuario.class, id);        

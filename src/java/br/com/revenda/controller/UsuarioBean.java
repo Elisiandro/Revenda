@@ -1,7 +1,7 @@
 package br.com.revenda.controller;
 
 import br.com.agenda.model.Usuario;
-import br.com.revenda.dao.InterfaceUsuario;
+import br.com.revenda.dao.InterfaceCrud;
 import br.com.revenda.dao.UsuarioDao;
 import java.awt.event.ActionEvent;
 import java.util.List;
@@ -17,7 +17,7 @@ import javax.faces.model.ListDataModel;
  * @author Elisiandro
  */
 @ManagedBean
-@SessionScoped
+@RequestScoped
 public class UsuarioBean {
     private Usuario usuario;
     private DataModel listaUsuarios;
@@ -48,13 +48,13 @@ public class UsuarioBean {
     
     public void adicionar(ActionEvent actionEvent)
     {
-        InterfaceUsuario dao = new UsuarioDao();
+        InterfaceCrud dao = new UsuarioDao();
         dao.salvar(usuario);
         usuario = new Usuario();
     }
     public void alterar(ActionEvent actionEvent)
     {
-        InterfaceUsuario dao = new UsuarioDao();
+        InterfaceCrud dao = new UsuarioDao();
         dao.atualizar(usuario);
         usuario = new Usuario();
     }
@@ -62,10 +62,8 @@ public class UsuarioBean {
     public String excluir()
     {
         Usuario usu = (Usuario)(listaUsuarios.getRowData());
-        InterfaceUsuario dao = new UsuarioDao();
+        InterfaceCrud dao = new UsuarioDao();
         dao.remover(usu);
-        return "index";
+        return "usuario";
     }
-
-    
 }

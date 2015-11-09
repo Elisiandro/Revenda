@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:decorate template="./templateMaster.xhtml">
+
+        <ui:define name="centro">
+
+            <h:form prependId="false" id="frmUsu">
+                <p:menubar>
+                    <p:menuitem value="Incluir"  icon="ui-icon-home" onclick="PF('dlgUsu').show();"></p:menuitem>
+                    <p:menuitem value="Print" icon="ui-icon-person"></p:menuitem>                
+                </p:menubar>
+
+
+                <p:dialog id="dlgUsu" widgetVar="dlgUsu" resizable="false" height="250" width="400" header="Usuario">
+
+                    <p:panelGrid columns="2">
+                        <h:outputText value="Nome" />
+                        <p:inputText id="nome" value="#{usuarioBean.usuario.nome}" required="true" requiredMessage="Insira um nome!" />
+
+                        <h:outputText value="Sobrenome"/>
+                        <p:inputText id="sobrenome" value="#{usuarioBean.usuario.sobrenome}" /> 
+
+                        <h:outputText value="Email"/>
+                        <p:inputText id="email" value="#{usuarioBean.usuario.email}" />
+
+                        <h:outputText value="Usuário"/>
+                        <p:inputText id="usuario" value="#{usuarioBean.usuario.usuario}" /> 
+
+                        <h:outputText value="Senha"/>
+                        <p:inputText id="senha" value="#{usuarioBean.usuario.senha}" /> 
+
+                        <h:outputLabel value="Data Nascimento" ></h:outputLabel>
+                        <p:calendar locale="pt" showButtonPanel="true" navigator="true" id="ptCal" showOn="button"></p:calendar>
+
+                        <p:commandButton value="Salvar" id="salva" actionListener="#{usuarioBean.adicionar(actionEvent)}"
+                                         update="dtUsuario frmUsu" oncomplete="PF('dlgUsu').hide();">
+
+
+                        </p:commandButton>
+                    </p:panelGrid>
+
+
+                </p:dialog>
+
+                <p:dataTable value="#{usuarioBean.listaUsuarios}" var="varUsuarios" id="dtUsuario" paginator="true" rows="18" lazy="true" >
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Nome" />
+                        </f:facet>
+                        <h:outputText value="#{varUsuarios.nome}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="SobreNome" />
+                        </f:facet>
+                        <h:outputText value="#{varUsuarios.sobrenome}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Email" />
+                        </f:facet>
+                        <h:outputText value="#{varUsuarios.email}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Usuário" />
+                        </f:facet>
+                        <h:outputText value="#{varUsuarios.usuario}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Senha" />
+                        </f:facet>
+                        <h:outputText value="#{varUsuarios.senha}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="" />
+                        </f:facet>
+
+                        <p:commandLink value="Excluir" action="#{usuarioBean.excluir()}" 
+                                       onclick="if (!confirm('Deseja exluir o contato? #{varUsuarios.nome} ?'))
+                                                   return false;"
+                                       update="dtUsuario"/>
+                    </p:column>
+
+
+
+                </p:dataTable>
+            </h:form>
+
+        </ui:define>
+
+    </ui:decorate>
+
+</html>
+

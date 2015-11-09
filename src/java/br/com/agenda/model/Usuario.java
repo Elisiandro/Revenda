@@ -6,24 +6,46 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author Elisiandro
  */
 
-@Entity(name="Usuario")
+
+@Table(name="t_usu")
+@Entity
 public class Usuario implements Serializable {
     
+    ///
+    /// Atributos
+    ///
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)    
     private Long id;
+    
+    @Column(length = 50)
     private String nome;
+    @Column(length = 50)
     private String sobrenome;
+    @Column(length = 50)
     private String usuario;
+    @Column(length = 50)
     private String senha;
+    @Column(length = 100)
     private String email;
-
+    
+    ///
+    /// Construtor
+    ///
+    public Usuario()
+    {
+    }
+    
+    ///
+    /// get e set
+    ///
     public Long getId() {
         return id;
     }
@@ -71,7 +93,5 @@ public class Usuario implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    
     
 }

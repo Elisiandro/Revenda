@@ -10,14 +10,6 @@
 
         <ui:composition template="./templateMaster.xhtml">
 
-            <!--            <ui:define name="top">
-                            usuario top
-                        </ui:define>
-            
-                        <ui:define name="left">
-                            usuario  left
-                        </ui:define>-->
-
             <ui:define name="centro">
                 <p:layoutUnit position="center">
                 <h:form prependId="false" id="frmUsu">
@@ -39,6 +31,9 @@
                             <h:outputText value="Senha"/>
                             <p:inputText id="senha" value="#{usuarioBean.usuario.senha}" /> 
 
+                            <h:outputLabel value="Data Nascimento" ></h:outputLabel>
+                            <p:calendar locale="pt" showButtonPanel="true" navigator="true" id="ptCal" showOn="button"></p:calendar>
+                            
                             <p:commandButton value="Salvar" id="salva" actionListener="#{usuarioBean.adicionar(actionEvent)}"
                                              update="dtUsuario frmUsu" oncomplete="PF('dlgUsu').hide();">
                                 
@@ -91,7 +86,7 @@
                             </f:facet>
 
                             <p:commandLink value="Excluir" action="#{usuarioBean.excluir()}" 
-                                           onclick="if (!confirm('Deseja exluir o contato? #{varUsuarios.nome} ?'))
+                                           onclick="if (!confirm('Deseja exluir o contato #{varUsuarios.nome} ?'))
                                                        return false;"
                                            update="dtUsuario"/>
                         </p:column>
