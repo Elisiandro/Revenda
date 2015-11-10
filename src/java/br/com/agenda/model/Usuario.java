@@ -1,12 +1,15 @@
 package br.com.agenda.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -35,6 +38,9 @@ public class Usuario implements Serializable {
     private String senha;
     @Column(length = 100)
     private String email;
+    
+    @Temporal(TemporalType.DATE)
+    private Date ultimoAcesso;
     
     ///
     /// Construtor
@@ -92,6 +98,14 @@ public class Usuario implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Date getUltimoAcesso() {
+        return ultimoAcesso;
+    }
+
+    public void setUltimoAcesso(Date ultimoAcesso) {
+        this.ultimoAcesso = ultimoAcesso;
     }
     
 }

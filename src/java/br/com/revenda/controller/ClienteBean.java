@@ -4,6 +4,7 @@ import br.com.agenda.model.Cliente;
 import br.com.revenda.dao.InterfaceCrud;
 import br.com.revenda.dao.ClienteDao;
 import java.awt.event.ActionEvent;
+import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -18,7 +19,7 @@ import javax.faces.model.ListDataModel;
  */
 @ManagedBean
 @RequestScoped
-public class ClienteBean {
+public class ClienteBean implements Serializable{
     private Cliente cliente;
     private DataModel listaClientes;
 

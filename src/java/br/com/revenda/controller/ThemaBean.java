@@ -4,6 +4,7 @@ import br.com.agenda.model.Cliente;
 import br.com.revenda.dao.InterfaceCrud;
 import br.com.revenda.dao.ClienteDao;
 import java.awt.event.ActionEvent;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ApplicationScoped;
@@ -19,7 +20,7 @@ import javax.faces.model.ListDataModel;
  */
 @ManagedBean(name = "themaBean")
 @ApplicationScoped
-public class ThemaBean {
+public class ThemaBean implements Serializable{
 
     private String layout;
     private List<String> lista;

@@ -18,7 +18,49 @@ public class UsuarioDao implements InterfaceCrud<Usuario>{
         Session ss = HibernateUtil.getSessionFactory().openSession();
         return (Usuario) ss.load(Usuario.class, id);        
     }
+    
+    public Usuario getUsuario(String pUsuario, String pSenha) {
+        Session ss = HibernateUtil.getSessionFactory().openSession();
+        
+        List<Usuario> list;
+        
+        list = ss.createQuery("SELECT u from Usuario u where u.usuario = :name and u.senha = :senha")
+                .setParameter("name", pUsuario)
+                .setParameter("senha", pSenha).list();
+                    
+        Usuario usuario;
+        for (Usuario item : list) {
+            usuario = item;
+            return usuario;
+        }
+    
+        return null;
+        
+    }
 
+
+
+    public Usuario getItem(String usu)
+    {        
+        Session ss = HibernateUtil.getSessionFactory().openSession();        
+        ss.beginTransaction(); 
+        List retorno = ss.createSQLQuery("select * from t_usu where usuario='"+usu+"'").list();
+        Usuario usuario = null;
+        
+        System.out.println("sssssss " + usu);
+        
+        if (retorno != null || retorno.size() > 0 )
+        {   
+            Object primeiraLinha = retorno.get(0);
+            usuario = (Usuario) primeiraLinha;
+        }
+        
+        ss.getTransaction().commit(); 
+        ss.close();
+        
+        return usuario;
+    }
+    
     @Override
     public void salvar(Usuario usuario) {        
         Session ss = HibernateUtil.getSessionFactory().openSession();  

@@ -4,6 +4,7 @@ import br.com.agenda.model.Usuario;
 import br.com.revenda.dao.InterfaceCrud;
 import br.com.revenda.dao.UsuarioDao;
 import java.awt.event.ActionEvent;
+import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -18,10 +19,15 @@ import javax.faces.model.ListDataModel;
  */
 @ManagedBean
 @RequestScoped
-public class UsuarioBean {
+public class UsuarioBean implements Serializable{
     private Usuario usuario;
     private DataModel listaUsuarios;
 
+    public UsuarioBean()
+    {
+        
+    }
+    
     public Usuario getUsuario() {
         if (this.usuario == null)
             this.usuario = new Usuario();
@@ -29,6 +35,19 @@ public class UsuarioBean {
         return this.usuario;
     }
 
+    ///
+    /// Busca usuario
+    ///    
+    public Usuario getUsuarioLogin(String usu, String senha) {                
+        
+        //UsuarioDao dao = new UsuarioDao();
+        //return dao.getItem(usu);
+        
+        UsuarioDao dao = new UsuarioDao();
+        return dao.getUsuario(usu, senha);
+        
+    }
+    
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
