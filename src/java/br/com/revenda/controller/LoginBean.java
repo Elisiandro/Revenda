@@ -101,10 +101,10 @@ public class LoginBean implements Serializable{
         //return "/home.xhtml?faces-redirect=true";
     }
     
-    public String realizaLogout() {
-        usuarioLogado = null;
+    public String realizaLogout() {        
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        return ("/login?faces-redirect=true");
+        usuarioLogado = null;        
+        return ("/index?faces-redirect=true");
     }
 
     public String getLogin() {

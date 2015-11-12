@@ -1,5 +1,6 @@
 package br.com.agenda.App;
 
+import br.com.agenda.model.Enum.PERFIL_GRUPO;
 import br.com.agenda.model.TipoPagamento;
 import br.com.agenda.model.Usuario;
 //import br.com.agenda.model.Vei;
@@ -31,6 +32,20 @@ public class Teste {
         ss.save(tp);  
         t.commit();  
         ss.close();
+        
+        Usuario usu = new Usuario();
+        usu.setNome("admin");
+        usu.setSenha("admin");
+        usu.setUsuario("admin");
+        usu.setPerfil(PERFIL_GRUPO.ADMIN);
+        
+        ss = HibernateUtil.getSessionFactory().openSession();  
+        t = ss.beginTransaction();  
+        ss.save(usu);  
+        t.commit();  
+        ss.close();
+        
+        
    
         
         

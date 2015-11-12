@@ -2,11 +2,15 @@ package br.com.agenda.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -41,6 +45,9 @@ public class Usuario implements Serializable {
     
     @Temporal(TemporalType.DATE)
     private Date ultimoAcesso;
+    
+    @Enumerated(EnumType.ORDINAL)
+    private Enum.PERFIL_GRUPO perfil;
     
     ///
     /// Construtor
@@ -107,5 +114,14 @@ public class Usuario implements Serializable {
     public void setUltimoAcesso(Date ultimoAcesso) {
         this.ultimoAcesso = ultimoAcesso;
     }
+
+    public Enum.PERFIL_GRUPO getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(Enum.PERFIL_GRUPO perfil) {
+        this.perfil = perfil;
+    }
+    
     
 }

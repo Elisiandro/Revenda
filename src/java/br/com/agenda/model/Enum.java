@@ -38,6 +38,22 @@ public class Enum {
         }
     }
     
+    public enum PERFIL_GRUPO {
+        ADMIN(1),
+        GERENTE_VENDA(2), 
+        VENDEDOR(3),
+        FINANCEIRO(4);
+        
+        
+        private final int valor;
+        PERFIL_GRUPO(int valorOpcao) {
+            valor = valorOpcao;
+        }
+        public int getValor() {
+            return valor;
+        }
+    }
+    
     public enum TIPO_AUTOMOVEL {
         
         CARRO(1), 

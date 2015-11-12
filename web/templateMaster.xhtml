@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -17,14 +18,45 @@
 
     <h:body>
         <p:layout fullPage="true">
+
+            <p:layoutUnit position="south" size="40" closable="true" collapsible="true">
+                <h:panelGrid id="bottom">
+                    <h:outputText value="Copyright © 2015 Laerts System Technologies Limited. All rights reserved. Version 1.0.1"/>
+                </h:panelGrid>
+            </p:layoutUnit>
+
             <!--Cima-->
             <p:layoutUnit position="north" size="100" >
                 <!--<h:graphicImage url="/tema/imagens/topo.jpg" />-->
                 <center><h3>Sistema logo</h3></center>
+
+                <!--                <p:menubar id="menubar">
+                                <p:submenu label="Committee" >
+                                    <p:menuitem value="Compose" url="#"/>
+                                    <p:menuitem value="Create" url="#"/>
+                                    <p:menuitem value="Modify" url="#"/>
+                                    <p:menuitem value="Search" url="#"/>
+                                    <p:menuitem value="Delete" url="#"/>
+                                </p:submenu> 
+                
+                                <p:submenu label="Logout" />
+                
+                            </p:menubar>-->
+
+
+                <p:menubar>
+                    <f:facet name="options">
+                        <!--<p:inputText style="margin-right:10px" placeholder="Search"/>-->
+                        <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" action="#{loginBean.realizaLogout()}" />
+                        <!--<p:commandButton value="Logout" icon="ui-icon-extlink" action="#{loginBean.realizaLogout()}" ajax="false"> </p:commandButton>-->
+
+                    </f:facet>
+                </p:menubar>
+
             </p:layoutUnit>
 
             <p:layoutUnit position="east" size="200" header="Acesso Rápido" resizable="true" closable="true" collapsible="true" effect="drop">
-<!--                <h:outputText value="Perfil de Usu" />-->
+                <!--                <h:outputText value="Perfil de Usu" />-->
                 <h:form>
                     <p:menu>
                         <p:submenu label="Perfil">

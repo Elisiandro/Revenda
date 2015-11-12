@@ -203,9 +203,13 @@
 
                             <p:outputLabel for="senha" value="Senha:" /> 
                             <p:password id="senha" value="#{loginBean.senha}" required="true" requiredMessage="Preencha a senha" /> 
-
-                            <p:commandButton value="Enviar" icon="ui-icon-star" action="#{loginBean.envia()}" ajax="false"> </p:commandButton> 
                         </p:panelGrid> 
+                        
+                        <div>
+                            <br />
+                            <p:commandButton value="Enviar" icon="ui-icon-star" action="#{loginBean.envia()}" ajax="false"> </p:commandButton>                            
+                        </div>
+                        
                         <div>
                             <p:messages id="messages1" />
                         </div>
