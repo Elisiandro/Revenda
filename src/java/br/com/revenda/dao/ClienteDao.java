@@ -22,7 +22,9 @@ public class ClienteDao implements InterfaceCrud<Cliente>{
     public Cliente getItem(Long id) {
         
         Session ss = HibernateUtil.getSessionFactory().openSession();
-        return (Cliente) ss.load(Cliente.class, id);        
+        Cliente cliente = (Cliente) ss.load(Cliente.class, id);        
+        ss.close();
+        return cliente;
     }
 
     @Override
@@ -61,6 +63,7 @@ public class ClienteDao implements InterfaceCrud<Cliente>{
         List lista;
         lista = ss.createQuery("from Cliente").list();
         t.commit();
+        ss.close();
         
         return lista;
     }
